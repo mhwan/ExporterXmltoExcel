@@ -41,7 +41,6 @@ public class JFileChooser extends JFrame implements ActionListener {
         textField1.setEditable(false);
         textField1.setText("경로를 선택해주세요.");
         checkboxpanel.setLayout(new BoxLayout(checkboxpanel, BoxLayout.PAGE_AXIS));
-        //checkboxpanel.setBorder(BorderFactory.createEmptyBorder());
         addpanel = new JPanel();
         addpanel.setLayout(new BoxLayout(addpanel, BoxLayout.PAGE_AXIS));
         addpanel.setBorder(BorderFactory.createEmptyBorder());
@@ -59,11 +58,6 @@ public class JFileChooser extends JFrame implements ActionListener {
             chooser.setAcceptAllFileFilterUsed(false);
 
             if (chooser.showOpenDialog(selectpanel) == javax.swing.JFileChooser.APPROVE_OPTION) {
-                System.out.println("getCurrentDirectory(): "
-                        + chooser.getCurrentDirectory());
-                System.out.println("getSelectedFile() : "
-                        + chooser.getSelectedFile());
-
                 String path = chooser.getSelectedFile().getAbsolutePath();
                 addCheckbox(path);
                 textField1.setText(path);
@@ -86,7 +80,6 @@ public class JFileChooser extends JFrame implements ActionListener {
                 int result = savechooser.showSaveDialog(this);
                 if (result == javax.swing.JFileChooser.APPROVE_OPTION) {
                     File selectedFile = getFileWithExtension(savechooser.getSelectedFile(), savechooser.getFileFilter().getDescription());
-                    System.out.println("Selected file: " + selectedFile.getAbsolutePath());
                     listner.chooseActioned(getpathfromCheckbox(), selectedFile.getAbsolutePath());
                 }
             }
